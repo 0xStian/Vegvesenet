@@ -9,7 +9,7 @@ def ALPR(image):
         with open(f'{image}', 'rb') as fp:
             response = requests.post(
                 'https://api.platerecognizer.com/v1/plate-reader/',
-                data=dict(regions=regions),  # Optional
+                data=dict(regions=regions),
                 files=dict(upload=fp),
                 headers={'Authorization': 'Token api-key'}) # registrer og bytt "api-key" med din api key https://platerecognizer.com/
 
@@ -35,7 +35,7 @@ def send_request(reg_nr):
 
 
 while True:
-    bilde_av_bil = input(">")
+    bilde_av_bil = input("path to car image >")
     ALPR_return = ALPR(bilde_av_bil)
     result = str(send_request(ALPR_return))
 
